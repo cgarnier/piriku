@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const Remote = require('../lib/remote')
+
+Remote.init()

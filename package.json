@@ -1,0 +1,19 @@
+{
+  "name": "piriku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install",
+    "start": "forever start index.js",
+    "stop": "forever stop index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "q": "^1.4.1",
+    "simple-ssh": "^0.9.0"
+  }
+}

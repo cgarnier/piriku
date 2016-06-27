@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# post-receive hook for git-based deployments
+
+import sys
+import os
+from subprocess import call
+
+# configuration
+deploy_to_path = os.path.realpath('./deploy_dir')
+deploy_branch  = 'master'
+
+def init():
+    if not os.path.exists(deploy_to_path):
+        os.makedirs(deploy_to_path)
+
+def post_receive(from_commit, to_commit, branch_name):
+    # Don't deploy if pushed branch != deploy_branch
+    if not branch_name.endswith(deploy_branch):
+        print('Received branch ' + branch_name + ', not deploying.')
+        sys.exit()
+
+    # copy files to deploy directory
+    call('GIT_WORK_TREE="' + deploy_to_path + '" git checkout -f ' + branch_name, shell=True)
+    print('DEPLOY: ' + branch_name + '(' + to_commit + ') copied to ' + deploy_to_path)
+
+    # TODO: Deployment Tasks
+    # i.e. Run a script, restart daemons, etc
+
+    # npm run stop
+    print('running: npm run stop')
+    call('/bin/bash -i -c "npm run stop"', shell=True, cwd=deploy_to_path, executable='/bin/bash')
+
+    # Npm install
+    print('running: npm install')
+    call('/bin/bash -i -c "npm install"', shell=True, cwd=deploy_to_path, executable='/bin/bash')
+
+    # Npm run build
+    print('running: npm run build')
+    call('/bin/bash -i -c "npm run build"', shell=True, cwd=deploy_to_path, executable='/bin/bash')
+
+
+    # Npm start
+    print('running: npm run start')
+    call('/bin/bash -i -c "npm run start"', shell=True, cwd=deploy_to_path, executable='/bin/bash')
+
+
+if __name__ == '__main__':
+    # get values from STDIN
+    fc,tc,bn = sys.stdin.read().split()
+    init()
+    post_receive(fc, tc, bn)
