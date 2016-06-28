@@ -1,5 +1,22 @@
 #!/usr/bin/env node
 
-const Remote = require('../lib/remote')
+const package = require('../package.json')
+const program = require('commander')
+const commands = require('../lib/commands')
 
-Remote.init()
+program
+  .version(package.version)
+  .option('-c, --create', 'Create the app and initialize it on a host')
+  .option('-a, --add-remote', 'Add a git remote to the remote app')
+  .parse(process.argv)
+
+  if (program.create) {
+    console.log('create: ', program.create)
+    commands.create()
+    return
+  }
+
+  if (program.addRemote) {
+    console.log('add remote: ', program.addRemote)
+    return
+  }
