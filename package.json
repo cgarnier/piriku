@@ -1,7 +1,7 @@
 {
   "name": "piriku",
   "version": "0.1.0",
-  "description": "",
+  "description": "A tiny deployment module working over git",
   "main": "bin/piriku",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +9,19 @@
     "start": "forever start index.js",
     "stop": "forever stop index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Clément Garnier <cle.garnier@gmail.com>",
+  "bin": {
+    "module-name": "./bin/piriku"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cgarnier/piriku"
+  },
+  "bugs": {
+    "url": "https://github.com/cgarnier/piriku/issues"
+  },
+  "preferGlobal": true,
+  "license": "MIT",
   "dependencies": {
     "commander": "^2.9.0",
     "prompt": "^1.0.0",
