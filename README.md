@@ -11,10 +11,10 @@ Make deployments on Raspberry Pi easy.
 
   * prerequisites
     * Copy your ssh id on your host to avoid passwords ```ssh-copy-id user@host```
+    * Your project should have a .git/ (git init)
 
 
-
-  * ``` piriku ```
+  * ``` cd myProject/ && piriku create```
   * reply to the questions
   * git push piriku master
 
