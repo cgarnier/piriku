@@ -1,8 +1,8 @@
 {
   "name": "piriku",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "bin/piriku",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install",
