@@ -11,7 +11,7 @@
   },
   "author": "Clément Garnier <cle.garnier@gmail.com>",
   "bin": {
-    "module-name": "./bin/piriku"
+    "piriku": "./bin/piriku"
   },
   "repository": {
     "type": "git",
