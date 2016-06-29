@@ -4,7 +4,7 @@ Tiny deployment cli based on git.
 Make deployments on Raspberry Pi easy.
 
 ## install
-  * ``` npm install -g piriku ``` Coming soon
+  * ``` npm install -g piriku ```
   * or git clone and put /bin in your path
 
 ## usage
