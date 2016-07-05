@@ -1,12 +1,12 @@
+#!/bin/bash
 # usage:
-# $ export REGISTRY_USER=login && REGISTRY_PASSWORD=password [registry]
-# $ bash push.sh
+# $ REGISTRY_USER=login REGISTRY_PASSWORD=password ./push.sh
 
 # login to the registry
-docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD || exit 1
 
 # build the container to push
-docker build -t cgarnier/piriku:latest .
+docker build -t cgarnier/piriku:latest . || exit 1
 
 # get the branch name
 branch_git=$(git rev-parse -q --abbrev-ref HEAD | tr / _)
