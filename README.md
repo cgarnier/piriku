@@ -18,6 +18,27 @@ Make deployments on Raspberry Pi easy.
   * reply to the questions
   * git push piriku master
 
+## How to use piriku docker
+
+A docker image is already available on the docker hub.
+
+Create a `piriku` alias:
+
+```
+$ alias piriku='docker run -it -v $PWD:/tmp -v $HOME/.ssh:/root/.ssh -v /run/user/$UID/keyring/ssh:/run/user/$UID/keyring/ssh -e UID=$UID -e SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh --rm nib0r/piriku'
+$ piruki
+
+  Usage: piriku [options]
+
+  Options:
+
+    -h, --help        output usage information
+    -V, --version     output the version number
+    -c, --create      Create the app and initialize it on a host
+    -a, --add-remote  Add a git remote to the remote app
+
+```
+
 
 ## project config
 
