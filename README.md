@@ -25,7 +25,7 @@ A docker image is already available on the docker hub.
 Create a `piriku` alias:
 
 ```
-$ alias piriku='docker run -it -v $PWD:/tmp -v $HOME/.ssh:/root/.ssh -v /run/user/$UID/keyring/ssh:/run/user/$UID/keyring/ssh -e UID=$UID -e SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh --rm nib0r/piriku'
+$ alias piriku='docker run -it -v $PWD:/tmp -v $HOME/.ssh:/root/.ssh -v /run/user/$UID/keyring/ssh:/run/user/$UID/keyring/ssh -e UID=$UID -e SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh --rm cgarnier/piriku'
 $ piruki
 
   Usage: piriku [options]

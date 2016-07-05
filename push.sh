@@ -6,7 +6,7 @@
 docker login -u $REGISTRY_USER -p $REGISTRY_PASSWORD
 
 # build the container to push
-docker build -t nib0r/piriku:latest .
+docker build -t cgarnier/piriku:latest .
 
 # get the branch name
 branch_git=$(git rev-parse -q --abbrev-ref HEAD | tr / _)
@@ -14,11 +14,7 @@ branch_git=$(git rev-parse -q --abbrev-ref HEAD | tr / _)
 export branch
 
 # tag the container
-# docker tag -f robosoft/odoo8:latest hub.nibor.me/robosoft/odoo8:latest
-# docker tag -f robosoft/odoo8:latest hub.nibor.me/robosoft/odoo8:"$(git rev-parse -q HEAD)" # sha
-# docker tag -f robosoft/odoo8:latest hub.nibor.me/robosoft/odoo8:"$(git describe --always --dirty --tags)" # tag
-docker tag -f nib0r/piriku:latest nib0r/piriku:"$(echo $branch | tr / _)" # branch
+docker tag -f cgarnier/piriku:latest cgarnier/piriku:"$(echo $branch | tr / _)" # branch
 
-for image in $(docker images | grep nib0r/piriku | awk '{print $1 ":" $2}' | head -n 4) ; \
+for image in $(docker images | grep cgarnier/piriku | awk '{print $1 ":" $2}' | head -n 4) ; \
     do docker push $image ; done
-
