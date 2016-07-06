@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cgarnier/piriku.svg?branch=master)](https://travis-ci.org/cgarnier/piriku)
+
 # piriku
 Tiny deployment cli based on git.
 
