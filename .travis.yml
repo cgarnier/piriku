@@ -1,0 +1,41 @@
+services:
+- docker
+sudo: required
+branches:
+  only:
+  - develop
+  - master
+language: node_js
+node_js:
+- '6'
+install:
+- npm install
+deploy:
+  - provider: npm
+    on:
+      tags: true
+    email: cle.garnier@gmail.com
+    api_key:
+      secure: lQw1TeAnwltIumr0h6O2XvhtG3EJVCnBeTpNUBS8IYk+mM+6bs3iGiZ+fUWSXAtfL7HrHaJQQDbSGhuXtleBzf2HiB+QqmY4Zf7ZfCtI1ITYb6nKa+WBR6MZ/FMpVMnBmD0d+IJPjt3gJ6KiawMuNkqAsRqALE5Tlzvu+QNBshDqMRxB8GldG6O0D+uO2T1YvpwefWAbGA7onCnwup5g/IpGEVpsyHsu5KbEkRO4+DRc4+aigJZq6W1kWOzI9a7D1G0TjSGyNmLNovf2BtlnBJR7xyHr6sb0yi0g3XFhvaifdH/iSHb4uEMHm4fMueKOKnMZSVkAE+/N1yDM2ex2Vdlk4g0oXv0gVsXAuf7hreZhctInjVI65njwAEWGpS0gPB2Luub7MyeR6eSuZE2lYSoaXEMKTojhY3OVTBaoRqGLiOt6ldnqHOY7RWFZgzMZDsESB1N4DRmqwn/NWJb3qW44FpDUKED9P6yQg2TzbQmUiq/Oc/LGLeNonjB9npxt9nE7tWC5hlssWtxwe9442r5bELvot6zWMh6dFYYMpP5m1XFt0+hbIbvEHaBl4gJTUXa4B7Rxed/dSSw0qkkngVOYPHA/E6MpCbzukZtKW5BNwVmx5p60lDOCHwQmU6mSgDaN60sGR6Enf/NhppNo/61huHsoEpUmycCGLfdF1dg=
+  - provider: script
+    script: release.sh
+    on:
+      tags: true
+
+script:
+- npm test
+env:
+  global:
+  - secure: Hp7Z6GN+jq0AVmh15lp5rLPjEXvwB1tKJrOmSJlOYe+0wvEZM+9tTKJ94YGuB6gorLQqLQ0lFdJZsr6PsnjmqSkRMtj/QVsu/i2PEuf92bWQ4Sq90Op4cF6FUpfn+lfQOaG9lzpvOfZOK5CqWns19XaqzHxWZMTv9E0z8CT+dX/azN5uLcjUYiMJYqbBlA426f1MsykLX6awJzx97XrJMHdUgJU9T2mQ57EqqNkCttsfblEatNl2Kgb3Uf5Pu3pkpzNlSV3MpyporWjTvakoWPdyYZ6IWiY0kFM7jJ/gvcBlianilJihrMCq26dnvQ4JZvWTGYkRyH044mjvdJ6b3E/lZpJMRK9XbbJtuSwuMfnv2mJvaVQ8gE24mAY3vF1LpIELLM9NT2uBiW83sX6x/eupZuyuG/AcB2ENu+RowbjjKsbXq8HDt247IllF5vFO3NTn4wV8pyuZGH4yZA4KehQNaAU+9LF7vqav98sh2CGkTNXXesZwWiMX5/Kl2sDYcXldUYvlir/Z1l/PDpuFRs+fsuhelMpCXCWIeUCEDcrjpjOXnzqdQayrjsseqDpFfkjUNwnm92/f35mc5pDpe6F1+IIwYueU1gmBIIzQp7D7hBRynKVS1BOZLjYGZLwBX7njaFE599K3AxjTmjSXv7f4xdrkCxFsEmWv3IKzM30=
+  - secure: liyqOYFnRcbi4CYR6bDEA6RwXlEk4jQ/iGmI5DOkag44vasPB9ODJEiU/O8nlr9ZJt//pntlqGZFu9rzLNlrvgMyAXr8TlAQHPUWrxlUtd4Yzlyq+1olhqx7bYp089lptR9mmeS0/EunAtIX/Jmfv28ZphtVsbjNmB54S3Sq5Rf2DYgr7KWuxQVBYghe8wfzhQ5MWtyo311stTmB5PRHB4SZB0fnOvJ4aPTQ7vaQT75zcs6D8UsZ7eNpPjJKyxO+254MIHqpRcyJtaGPMZZzX1x51/TivSKXTjNeicXi/rE3WDLpO0QTrM6BsbeSo5uH9FkBNW9ljZ9J5vGZKnWTzaezsZyR38gq0dEjbfxjpFokLjZbXN5fg5Z2SxMr45Ksh7x+gbO8wfPIkzA42sSXQAFwNVApkcdHJw+5TbAjh3/LkboLlrmBcvA9vsdAp8uwtYA23Fda5ZWcXDV1+y5a42Rp44e5jfhlssV7HUZotkOhxJkp3RQgkbB4V9G0bOVlM7JjTZnDb5/z9gx4z9o+odWNMm7u0C+CKOrjFuGPMoOJYn1sVAv/DEatzgLX6c75JRMKySe8Qk5cn/4PkJ+eqNR8no0Yqu5AfCYOmiDPjDfI+1t01qOcpNdXyrzdppHzu6+wDOSrDxx5GkpP+t3jBZGO6ClgLY14hGRF+o/Qwkc=
+  - COMMIT=${TRAVIS_COMMIT::8}
+  - secure: t+/ulDnE+7LLVCkrfbx0XRBYuW1u/mufWnu+m6TtHnJDMSE8tB0IKSeDd5r3IGe9ERCA5V6SFk4RFlzX2k1Nwegpiwvg7KnYy4hzXNcNbNd7TrlxuMROowTm5gCMkv4Hu4+2i61vnZiXi32z2KSBDHtnhdfi101ET9Sw4sBpQJ8P9GX3JoLb9oGcDhztVNYYZedsPt6fADj3QztjIMPitNtDSaTSECvYmnqOy6zA2sClcyuVh5ho8NBcAuYuHpz1FRQyex9FpI8DgVUH682EZFDv/aD2gwd2lp6h3X1WJ3reckX2pZ8PwI/rJg1i2d23V9jyXiZSa7QNhS0W7o+/oqkZbZOkR3maDI9WPBFwkgjTYwNADJGfZ5V3oLW1FQbA9ftuKF8qqx/OCUjIywYXBqfWl9guWwHqBiGvycSVtvmPQ/jj6LUKP+OQFBw+2g+eirIFp1EXpeorD03UV6MqJFWHEYFtqc6qclEcYyBUZwNEP7XOqLk8EVe0n9Fi6lE83PbH+2S9owvCAHXbr37+n9pCDRrCPPynyBAOWjMtp4TP5xyxOVJr506mL9+ovIrd7SsGtRUKFSyjKZsGcqecFZPDQjVpl9RTfw/osUWH7mBhYvn+Zv0mCJX2Xs41jVrftUHqLVdd3am8ALW+IVf9DlrVAPWl2Utd0fdzo8fbx0M=
+after_success:
+- docker login -e $REGISTRY_EMAIL -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+- export REPO=cgarnier/piriku
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+  ; fi`
+- docker build -f Dockerfile -t $REPO:$COMMIT .
+- docker tag $REPO:$COMMIT $REPO:$TAG
+- docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+- docker push $REPO
