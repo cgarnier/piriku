@@ -1,6 +1,6 @@
 {
   "name": "piriku",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "A tiny deployment module working over git",
   "main": "bin/piriku",
   "scripts": {
