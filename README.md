@@ -6,29 +6,33 @@ Tiny deployment cli based on git.
 Make deployments on Raspberry Pi easy.
 
 ## install
-  * ``` npm install -g piriku ```
-  * or git clone and put /bin in your path
 
-## usage
+### Using npm
 
-  * prerequisites
-    * Copy your ssh id on your host to avoid passwords ```ssh-copy-id user@host```
-    * Your project should have a .git/ (git init)
+  ```
+  npm install -g piriku
+  ```
 
-
-  * ``` cd myProject/ && piriku create```
-  * reply to the questions
-  * git push piriku master
-
-## How to use piriku docker
+### Using docker
 
 A docker image is already available on the docker hub.
 
-Create a `piriku` alias:
+  * Make the alias
 
 ```
-$ alias piriku='docker run -it -v $PWD:/tmp -v $HOME/.ssh:/root/.ssh -v /run/user/$UID/keyring/ssh:/run/user/$UID/keyring/ssh -e UID=$UID -e SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh --rm cgarnier/piriku'
-$ piruki
+alias piriku='docker run -it -v $PWD:/tmp -v $HOME/.ssh:/root/.ssh -v /run/user/$UID/keyring/ssh:/run/user/$UID/keyring/ssh -e UID=$UID -e SSH_AUTH_SOCK=/run/user/$UID/keyring/ssh --rm cgarnier/piriku'
+```
+
+  * save it to bash_aliases
+
+```
+alias piriku >> ~/.bash_aliases
+```
+
+  * try it
+
+```
+$ piriki
 
   Usage: piriku [options]
 
@@ -41,8 +45,18 @@ $ piruki
 
 ```
 
+## Usage
 
-## project config
+  * prerequisites
+    * Copy your ssh id on your host to avoid passwords ```ssh-copy-id user@host```
+    * Your project should have a .git/ (git init)
+
+
+  * ``` cd myProject/ && piriku create```
+  * reply to the questions
+  * git push piriku master
+
+## Basic project config
 
 ### Nodejs
 
@@ -72,6 +86,11 @@ deployment, build, start, stop automatic.
 }
 ```
 
+## sample
+
+  * Sample node project configured to works out of the box with piriku:
+
+[https://github.com/cgarnier/piriku-sample-node](https://github.com/cgarnier/piriku-sample-node)
 
 ## Roadmap
 
