@@ -32,7 +32,7 @@ alias piriku >> ~/.bash_aliases
   * try it
 
 ```
-$ piriki
+$ piriku
 
   Usage: piriku [options]
 
